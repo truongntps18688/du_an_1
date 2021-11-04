@@ -10,13 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Du_an_1">
         <activity
-            android:name=".fragment.trang2"
+            android:name=".loading_login.quen_mk"
             android:exported="false" />
         <activity
-            android:name=".fragment.trang1"
+            android:name=".loading_login.dang_ky"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".loading_login.login"
+            android:exported="true" />
+        <activity
+            android:name=".loading_login.loading"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +27,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".fragment.trang2"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.trang1"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

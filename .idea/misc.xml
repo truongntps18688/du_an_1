@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android_du_an_1/app/src/main/res/drawable/bogoc_button_login.xml" value="0.26614583333333336" />
+        <entry key="..\:/android_du_an_1/app/src/main/res/drawable/bogoc_login.xml" value="0.26614583333333336" />
+        <entry key="..\:/android_du_an_1/app/src/main/res/drawable/nen_dangky.xml" value="0.26614583333333336" />
+        <entry key="..\:/android_du_an_1/app/src/main/res/layout/activity_dang_ky.xml" value="0.25" />
+        <entry key="..\:/android_du_an_1/app/src/main/res/layout/activity_loading.xml" value="0.25" />
+        <entry key="..\:/android_du_an_1/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/android_du_an_1/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/android_du_an_1/app/src/main/res/layout/activity_main_hitde.xml" value="0.25" />
         <entry key="..\:/android_du_an_1/app/src/main/res/layout/activity_trang1.xml" value="0.25" />
