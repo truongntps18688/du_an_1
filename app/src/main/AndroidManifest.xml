@@ -10,16 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Du_an_1">
         <activity
-            android:name=".loading_login.quen_mk"
+            android:name=".NGUOI_DUNG.Nguoi_Dung"
             android:exported="false" />
         <activity
-            android:name=".loading_login.dang_ky"
+            android:name=".fragment.Gioi_Thieu"
             android:exported="false" />
         <activity
-            android:name=".loading_login.login"
+            android:name=".NGUOI_DUNG.quen_mk"
+            android:exported="false" />
+        <activity
+            android:name=".NGUOI_DUNG.dang_ky"
+            android:exported="false" />
+        <activity
+            android:name=".NGUOI_DUNG.login"
             android:exported="true" />
         <activity
-            android:name=".loading_login.loading"
+            android:name=".NGUOI_DUNG.loading"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

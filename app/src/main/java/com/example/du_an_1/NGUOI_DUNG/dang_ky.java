@@ -1,4 +1,4 @@
-package com.example.du_an_1.loading_login;
+package com.example.du_an_1.NGUOI_DUNG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,13 +41,17 @@ public class dang_ky extends AppCompatActivity {
                 if(x.isEmpty() || y.isEmpty() || z.isEmpty() || t.isEmpty()){
                     // kiểm tra rỗng
                     Toast.makeText(dang_ky.this, "không được để trống", Toast.LENGTH_SHORT).show();
+                }else if(y.length() < 6){
+                    // kiểm tra xem mật khẩu đã đạt yêu cầu chưa
+                    Toast.makeText(dang_ky.this, "mật khẩu ít nhất 6 ký tự", Toast.LENGTH_SHORT).show();
+                    mk.requestFocus();
                 }else{
                     // thêm user
                     user_DAO user_dao = new user_DAO(dang_ky.this);
                     USER user = new USER(x,y,z,t);
                     user_dao.insert(user);
                     Toast.makeText(dang_ky.this, "thành công", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(dang_ky.this,login.class);
+                    Intent i = new Intent(dang_ky.this, login.class);
                     startActivity(i);
                 }
 

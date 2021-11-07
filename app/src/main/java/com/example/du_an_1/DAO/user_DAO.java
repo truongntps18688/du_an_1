@@ -53,4 +53,25 @@ public class user_DAO {
         int row = db.update(TABLE_USER, values, COLUMN_USER_TK + " = ?", new String[]{u.getTk()});
         return (row > 0);
     }
+    public Boolean updata_quen_mk(USER u) {
+        db = myDatabase.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_MK, u.getMk());
+        int row = db.update(TABLE_USER, values, COLUMN_USER_TK + " = ?", new String[]{u.getTk()});
+        return (row > 0);
+    }
+    public Boolean updata_CauHoi(USER u) {
+        db = myDatabase.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_CauHoi, u.getCauhoi());
+        int row = db.update(TABLE_USER, values, COLUMN_USER_TK + " = ?", new String[]{u.getTk()});
+        return (row > 0);
+    }
+    public Boolean updata_CauTL(USER u) {
+        db = myDatabase.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_TL, u.getTl());
+        int row = db.update(TABLE_USER, values, COLUMN_USER_TK + " = ?", new String[]{u.getTk()});
+        return (row > 0);
+    }
 }

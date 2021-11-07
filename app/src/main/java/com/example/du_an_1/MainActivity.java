@@ -12,6 +12,8 @@ import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.du_an_1.fragment.Gioi_Thieu;
+import com.example.du_an_1.NGUOI_DUNG.Nguoi_Dung;
 import com.example.du_an_1.fragment.trang1;
 import com.example.du_an_1.fragment.trang2;
 import com.google.android.material.navigation.NavigationView;
@@ -67,15 +69,21 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = null;
         Class fragmentclass;
         switch (item.getItemId()){
-            case R.id.trang1:
+            case R.id.trang_chu:
                 fragmentclass = trang1.class;
                 break;
-            case R.id.trang2:
+            case R.id.PHAN_LOAI:
                 fragmentclass = trang2.class;
+                break;
+            case R.id.USER:
+                fragmentclass = Nguoi_Dung.class;
                 break;
             case R.id.DX:
                 finish();
                 return true;
+            case R.id.GT:
+                fragmentclass = Gioi_Thieu.class;
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + item.getItemId());
         }

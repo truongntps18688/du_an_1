@@ -1,4 +1,4 @@
-package com.example.du_an_1.loading_login;
+package com.example.du_an_1.NGUOI_DUNG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +19,6 @@ import com.example.du_an_1.MainActivity;
 import com.example.du_an_1.R;
 import com.example.du_an_1.model.USER;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class login extends AppCompatActivity {
@@ -41,7 +40,14 @@ public class login extends AppCompatActivity {
         ed2 = findViewById(R.id.MK_DN);
         bt = findViewById(R.id.login);
         checkBox = findViewById(R.id.checkbox);
-
+        // lấy lại mật khẩu
+        tv_quen_mk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(login.this, quen_mk.class);
+                startActivity(i);
+            }
+        });
         // kiểm tra tính tồn tại của user, nếu đã có thì ẩn thanh đăng ký tài khoản
         data = (List<USER>) (new user_DAO(login.this)).select();
         Log.i("size", "onCreate: " + data.size());
@@ -54,7 +60,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // chuyển qua activity đăng ký
-                Intent i = new Intent(login.this,dang_ky.class);
+                Intent i = new Intent(login.this, dang_ky.class);
                 startActivity(i);
             }
         });

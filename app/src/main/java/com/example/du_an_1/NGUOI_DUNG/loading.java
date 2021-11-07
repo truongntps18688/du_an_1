@@ -1,11 +1,10 @@
-package com.example.du_an_1.loading_login;
+package com.example.du_an_1.NGUOI_DUNG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.du_an_1.R;
@@ -23,7 +22,7 @@ public class loading extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(),login.class));
+                startActivity(new Intent(getApplicationContext(), login.class));
                 finish();
             }
         }, 3000);
