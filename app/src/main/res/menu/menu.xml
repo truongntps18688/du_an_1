@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/trang_chu"
+            android:enabled="true"
+            android:title="trang chủ"/>
+        <item
+            android:id="@+id/PHAN_LOAI"
+            android:enabled="true"
+            android:title="Phân Loại"/>
+
+
+        <item android:title="Người dùng">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/USER"
+                        android:enabled="true"
+                        android:title="Người dùng"/>
+                    <item
+                        android:id="@+id/DX"
+                        android:enabled="true"
+                        android:title="Đăng xuất"/>
+                    <item
+                        android:id="@+id/GT"
+                        android:enabled="true"
+                        android:title="Giới thiệu"/>
+                </group>
+            </menu>
+        </item>
+    </group>
+</menu>
