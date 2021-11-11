@@ -22,7 +22,7 @@ public class MyDatabase extends SQLiteOpenHelper {
 
         q = "CREATE TABLE IF NOT EXISTS "+TABLE_PHANLOAI+"" +
                 "("+COLUMN_PHANLOAI_ID+" INTEGER PRIMARY KEY autoincrement," +
-                ""+COLUMN_PHANLOAI_HINH+" TEXT ," +
+                ""+COLUMN_PHANLOAI_HINH+" BLOB ," +
                 ""+COLUMN_PHANLOAI_NAME+" TEXT ," +
                 ""+COLUMN_PHANLOAI_TRANG_THAI+" INTEGER)";
         db.execSQL(q);

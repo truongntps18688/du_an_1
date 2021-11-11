@@ -1,8 +1,11 @@
 package com.example.du_an_1.Entity;
 
+import android.graphics.Bitmap;
+
 import java.util.Date;
 
 public class GIAODICH {
+
     private int id;
     private Date ngay;
     private String gio;

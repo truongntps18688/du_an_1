@@ -8,8 +8,19 @@
     tools:context=".Fragment.Fragment_PhanLoai">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_phanloai"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/my_tab"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        app:tabMode="fixed" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        app:tabMode="scrollable"
+        android:id="@+id/my_viewpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+ />
+
 </LinearLayout>

@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Fragment fragment = (Fragment) fragmentclass.newInstance();
                 getSupportFragmentManager().beginTransaction().replace(R.id.may_layout_container,fragment).commit();
-                navigationView.getMenu().getItem(0).setChecked(true);
-                setTitle(navigationView.getMenu().getItem(0).getTitle());
+                navigationView.getMenu().getItem(1).setChecked(true);
+                setTitle(navigationView.getMenu().getItem(1).getTitle());
             }catch (Exception e){ }
 
         }
@@ -70,10 +70,10 @@ public class MainActivity extends AppCompatActivity {
         Class fragmentclass;
         switch (item.getItemId()){
             case R.id.trang_chu:
-                fragmentclass = Fragment_PhanLoai.class;
+                fragmentclass = trang2.class;
                 break;
             case R.id.PHAN_LOAI:
-                fragmentclass = trang2.class;
+                fragmentclass = Fragment_PhanLoai.class;
                 break;
             case R.id.USER:
                 fragmentclass = Nguoi_Dung.class;

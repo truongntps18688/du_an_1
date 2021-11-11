@@ -2,14 +2,18 @@ package com.example.du_an_1.Entity;
 
 public class PHANLOAI {
     private int id;
-    private String src;
+    private int src;
     private String name;
     private int trangthai;
 
     public PHANLOAI() {
     }
-
-    public PHANLOAI(int id, String src, String name, int trangthai) {
+    public PHANLOAI(int src, String name, int trangthai) {
+        this.src = src;
+        this.name = name;
+        this.trangthai = trangthai;
+    }
+    public PHANLOAI(int id, int src, String name, int trangthai) {
         this.id = id;
         this.src = src;
         this.name = name;
@@ -24,11 +28,11 @@ public class PHANLOAI {
         this.id = id;
     }
 
-    public String getSrc() {
+    public int getSrc() {
         return src;
     }
 
-    public void setSrc(String src) {
+    public void setSrc(int src) {
         this.src = src;
     }
 

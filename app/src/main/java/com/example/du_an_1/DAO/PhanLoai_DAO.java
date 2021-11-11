@@ -6,6 +6,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.ImageView;
+
 import com.example.du_an_1.Database.MyDatabase;
 import com.example.du_an_1.Entity.PHANLOAI;
 import java.util.ArrayList;
@@ -18,12 +20,14 @@ public class PhanLoai_DAO {
         myDatabase = new MyDatabase(c);
     }
     public ArrayList<PHANLOAI> select(){
+        ImageView imageView;
+
         db = myDatabase.getReadableDatabase();
         ArrayList<PHANLOAI> ds = new ArrayList<>();
         Cursor cursor = db.rawQuery("select * from "+TABLE_PHANLOAI+"",null);
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);
-            String src = cursor.getString(1);
+            int src = cursor.getInt(1);
             String name = cursor.getString(2);
             int trangthai = cursor.getInt(3);
             ds.add(new PHANLOAI(id,src,name,trangthai));
@@ -38,7 +42,7 @@ public class PhanLoai_DAO {
                 +COLUMN_PHANLOAI_TRANG_THAI+ " = ?", new String[]{String.valueOf(_trangthai)});
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);
-            String src = cursor.getString(1);
+            int src = cursor.getInt(1);
             String name = cursor.getString(2);
             int trangthai = cursor.getInt(3);
             ds.add(new PHANLOAI(id,src,name,trangthai));

@@ -25,6 +25,6 @@ public class loading extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), login.class));
                 finish();
             }
-        }, 3000);
+        }, 1000);
     }
 }
