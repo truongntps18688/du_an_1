@@ -139,8 +139,18 @@ public class FragmentChildChi_TabLayout extends Fragment {
                     if(type == 1){
                         phanloai.setId(_phanloai.getId());
                         dao.updata(phanloai);
+                        if(dao.updata(phanloai)){
+                            Toast.makeText(getContext(), "Sửa thành công", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getContext(), "Sửa thất bại", Toast.LENGTH_SHORT).show();
+                        }
                     }else{
-                        dao.insert(phanloai);
+
+                        if(dao.insert(phanloai)){
+                            Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                        }
                     }
                     updateData();
                 }
@@ -181,7 +191,11 @@ public class FragmentChildChi_TabLayout extends Fragment {
     }
     private void del(PHANLOAI __phanloai){
         dao = new PhanLoai_DAO(getContext());
-        dao.delete(__phanloai.getId());
+        if(dao.delete(__phanloai.getId())){
+            Toast.makeText(getContext(), "Xoá thành công", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getContext(), "Xoá thất bại", Toast.LENGTH_SHORT).show();
+        }
         updateData();
     }
 
