@@ -6,8 +6,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.du_an_1.dataBase.MyDatabase;
-import com.example.du_an_1.model.PHANLOAI;
+import android.widget.ImageView;
+
+import com.example.du_an_1.Database.MyDatabase;
+import com.example.du_an_1.Entity.PHANLOAI;
 import java.util.ArrayList;
 
 public class PhanLoai_DAO {
@@ -18,12 +20,14 @@ public class PhanLoai_DAO {
         myDatabase = new MyDatabase(c);
     }
     public ArrayList<PHANLOAI> select(){
+        ImageView imageView;
+
         db = myDatabase.getReadableDatabase();
         ArrayList<PHANLOAI> ds = new ArrayList<>();
         Cursor cursor = db.rawQuery("select * from "+TABLE_PHANLOAI+"",null);
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);
-            String src = cursor.getString(1);
+            int src = cursor.getInt(1);
             String name = cursor.getString(2);
             int trangthai = cursor.getInt(3);
             ds.add(new PHANLOAI(id,src,name,trangthai));
@@ -38,7 +42,7 @@ public class PhanLoai_DAO {
                 +COLUMN_PHANLOAI_TRANG_THAI+ " = ?", new String[]{String.valueOf(_trangthai)});
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);
-            String src = cursor.getString(1);
+            int src = cursor.getInt(1);
             String name = cursor.getString(2);
             int trangthai = cursor.getInt(3);
             ds.add(new PHANLOAI(id,src,name,trangthai));
@@ -68,5 +72,24 @@ public class PhanLoai_DAO {
         values.put(COLUMN_PHANLOAI_TRANG_THAI,phanloai.getTrangthai());
         int row = db.update(TABLE_PHANLOAI,values,COLUMN_PHANLOAI_ID + " = ?",new String[]{phanloai.getId() + ""});
         return (row > 0);
+    }
+    public int check(String _name) {
+        db= myDatabase.getReadableDatabase();
+        ArrayList<PHANLOAI> ds = new ArrayList<>();
+        Cursor c = db.rawQuery("select * from "+TABLE_PHANLOAI+" WHERE "+COLUMN_PHANLOAI_NAME+" = ? "
+                ,new String[]{String.valueOf(_name)});
+        while (c.moveToNext()) {
+            int id = c.getInt(0);
+            int src = c.getInt(1);
+            String name = c.getString(2);
+            int trangthai = c.getInt(3);
+            PHANLOAI phanloai = new PHANLOAI(id,src,name,trangthai);
+            ds.add(phanloai);
+        }
+        c.close();
+        if (ds.size()==0){
+            return -1;
+        }
+        return 1;
     }
 }

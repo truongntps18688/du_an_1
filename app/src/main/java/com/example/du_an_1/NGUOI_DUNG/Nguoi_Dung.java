@@ -2,12 +2,11 @@ package com.example.du_an_1.NGUOI_DUNG;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.du_an_1.DAO.user_DAO;
 import com.example.du_an_1.R;
-import com.example.du_an_1.model.USER;
+import com.example.du_an_1.Entity.USER;
 
 import java.util.List;
 
@@ -52,6 +51,9 @@ public class Nguoi_Dung extends Fragment {
         tv_1.setText(data.get(0).getMk());
         tv_2.setText(data.get(0).getCauhoi());
         tv_3.setText(data.get(0).getTl());
+        // ẩn mật khẩu và câu trả lời
+        tv_1.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        tv_3.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

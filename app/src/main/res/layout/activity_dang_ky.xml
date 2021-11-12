@@ -7,13 +7,13 @@
     tools:context=".NGUOI_DUNG.dang_ky">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
+        android:src="@drawable/anh_nen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/anh_nen">
-    </ImageView>
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <ImageView
         android:layout_width="150dp"
@@ -26,12 +26,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="650dp"
         android:background="@drawable/bogoc_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <TextView
             android:id="@+id/tv_login"
@@ -43,6 +42,7 @@
             android:textColor="@color/black"
             android:textSize="30dp"
             android:textStyle="bold" />
+
         <LinearLayout
             android:id="@+id/linlay1"
             android:layout_width="match_parent"
@@ -111,6 +111,7 @@
                     android:textColor="@color/black"
                     android:textSize="20dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,6 +128,7 @@
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
+
                 <EditText
                     android:id="@+id/CAUHOI_DK"
                     android:layout_width="match_parent"
@@ -139,6 +141,7 @@
                     android:textColor="@color/black"
                     android:textSize="18dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,6 +158,7 @@
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
+
                 <EditText
                     android:id="@+id/TL_DK"
                     android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.du_an_1.DAO.user_DAO;
 import com.example.du_an_1.R;
-import com.example.du_an_1.model.USER;
+import com.example.du_an_1.Entity.USER;
 
 import java.util.List;
 
@@ -38,6 +39,8 @@ public class quen_mk extends AppCompatActivity {
         ln1.setVisibility(View.GONE);
         ln2.setVisibility(View.GONE);
         doimk.setVisibility(View.GONE);
+        // ẩn mật khẩu
+        mk_moi.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         List<USER> data = (List<USER>) (new user_DAO(quen_mk.this)).select();
         //thực hiện kiểm tra
         kt.setOnClickListener(new View.OnClickListener() {

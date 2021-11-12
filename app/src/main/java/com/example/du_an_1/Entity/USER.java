@@ -1,4 +1,4 @@
-package com.example.du_an_1.model;
+package com.example.du_an_1.Entity;
 
 public class USER {
     private String tk;

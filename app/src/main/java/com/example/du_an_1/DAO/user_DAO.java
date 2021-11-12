@@ -7,8 +7,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.du_an_1.dataBase.MyDatabase;
-import com.example.du_an_1.model.USER;
+import com.example.du_an_1.Database.MyDatabase;
+import com.example.du_an_1.Entity.USER;
 
 import java.util.ArrayList;
 import java.util.List;

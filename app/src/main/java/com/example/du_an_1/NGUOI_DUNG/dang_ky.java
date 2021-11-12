@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.du_an_1.DAO.user_DAO;
 import com.example.du_an_1.R;
-import com.example.du_an_1.model.USER;
+import com.example.du_an_1.Entity.USER;
 
 public class dang_ky extends AppCompatActivity {
     EditText tk,mk,cauhoi,tl;

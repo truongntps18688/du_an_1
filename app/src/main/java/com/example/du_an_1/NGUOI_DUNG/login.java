@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.du_an_1.DAO.user_DAO;
 import com.example.du_an_1.MainActivity;
 import com.example.du_an_1.R;
-import com.example.du_an_1.model.USER;
+import com.example.du_an_1.Entity.USER;
 
 import java.util.List;
 
@@ -70,6 +70,7 @@ public class login extends AppCompatActivity {
         ed1.setText(LuuThongTinDangNhap.getString("TK",""));
         ed2.setText(LuuThongTinDangNhap.getString("MK",""));
         checkBox.setChecked(LuuThongTinDangNhap.getBoolean("CHECK",false));
+        // ẩn mật khẩu
         ed2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
 

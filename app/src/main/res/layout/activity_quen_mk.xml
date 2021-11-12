@@ -7,13 +7,13 @@
     tools:context=".NGUOI_DUNG.quen_mk">
 
     <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
+        android:src="@drawable/anh_nen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/anh_nen">
-    </ImageView>
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <ImageView
         android:layout_width="150dp"
@@ -25,13 +25,12 @@
         app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <RelativeLayout
-        android:background="@drawable/bogoc_login"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="750dp"
+        android:background="@drawable/bogoc_login"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
 
         <TextView
             android:id="@+id/tv_login"
@@ -149,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:paddingLeft="10dp"
-                    android:text="Mật Khẩu:"
+                    android:text="Mật Khẩu mới:"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="20dp"

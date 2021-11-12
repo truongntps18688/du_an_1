@@ -13,7 +13,7 @@
             android:name=".NGUOI_DUNG.Nguoi_Dung"
             android:exported="false" />
         <activity
-            android:name=".fragment.Gioi_Thieu"
+            android:name=".Fragment.Gioi_Thieu"
             android:exported="false" />
         <activity
             android:name=".NGUOI_DUNG.quen_mk"
@@ -34,10 +34,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".fragment.trang2"
+            android:name=".Fragment.trang2"
             android:exported="false" />
         <activity
-            android:name=".fragment.trang1"
+            android:name=".Fragment.Fragment_PhanLoai"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

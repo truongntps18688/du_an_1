@@ -1,8 +1,7 @@
-package com.example.du_an_1.fragment;
+package com.example.du_an_1.Fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;

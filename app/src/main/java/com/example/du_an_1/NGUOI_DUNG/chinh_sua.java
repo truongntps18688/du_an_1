@@ -4,7 +4,6 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentResultListener;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.du_an_1.DAO.user_DAO;
 import com.example.du_an_1.R;
-import com.example.du_an_1.model.USER;
+import com.example.du_an_1.Entity.USER;
 
 import java.util.List;
 

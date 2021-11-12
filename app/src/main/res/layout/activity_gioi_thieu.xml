@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Gioi_Thieu"
+    tools:context=".Fragment.Gioi_Thieu"
     android:background="#68DCD6D6">
 
     <androidx.cardview.widget.CardView
