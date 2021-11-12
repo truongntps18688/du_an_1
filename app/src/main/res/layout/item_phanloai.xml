@@ -7,12 +7,11 @@
     android:id="@+id/SwipeRevealLayout"
     app:mode="same_level"
     android:layout_marginTop="10dp"
-    app:dragEdge="left">
+    app:dragEdge="right">
     <!-- Your secondary layout here -->
     <LinearLayout
         android:id="@+id/lnDelPhanLoai"
-        android:backgroundTint="#F44336"
-        android:background="@drawable/hieuung_phanloai"
+        android:background="#F44336"
         android:layout_width="100dp"
         android:layout_height="match_parent" >
         <ImageView
@@ -24,12 +23,19 @@
     </LinearLayout>
     <!-- Your main layout here -->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:id="@+id/lnPH"
-        android:backgroundTint="#FF9800"
-        android:background="@drawable/hieuung_phanloai"
+        android:background="#FF9800"
         android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/img_phanloai"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/anh1" />
         <TextView
             android:textColor="@color/white"
             android:textSize="20dp"
@@ -41,13 +47,6 @@
             android:layout_height="100dp"
             android:text="TextView" />
 
-        <ImageView
-            android:layout_marginBottom="15dp"
-            android:layout_gravity="center"
-            android:id="@+id/img_phanloai"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            app:srcCompat="@drawable/anh1" />
 
     </LinearLayout>
 </com.chauthai.swipereveallayout.SwipeRevealLayout>

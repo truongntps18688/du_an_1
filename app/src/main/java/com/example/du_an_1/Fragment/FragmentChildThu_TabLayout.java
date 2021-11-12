@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.du_an_1.Adapter.adapter_itemimgphanloai;
@@ -84,6 +85,7 @@ public class FragmentChildThu_TabLayout extends Fragment {
 
         //tạo danh sách chứa các ảnh trong dialog
         List<Integer> list = new ArrayList<>();
+
         list.add(R.drawable.anh1);  list.add(R.drawable.anh2);  list.add(R.drawable.anh3);
         list.add(R.drawable.anh4);  list.add(R.drawable.anh6);  list.add(R.drawable.anh7);
         list.add(R.drawable.anh8);  list.add(R.drawable.anh9);  list.add(R.drawable.anh10);
@@ -170,9 +172,10 @@ public class FragmentChildThu_TabLayout extends Fragment {
             }
         });
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+
         rv.setHasFixedSize(true);
-        rv.setLayoutManager(gridLayoutManager);
+        rv.setLayoutManager(linearLayoutManager);
         rv.setAdapter(adapter);
     }
     private boolean validate(String ed){

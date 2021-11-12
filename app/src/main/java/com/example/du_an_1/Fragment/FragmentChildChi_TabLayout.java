@@ -111,10 +111,10 @@ public class FragmentChildChi_TabLayout extends Fragment {
                 imgCaterDialog.setImageResource(idAnh);
             }
         });
-        rv_dialog.setAdapter(adapter);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),4);
-        rv_dialog.setLayoutManager(gridLayoutManager);
 
+           GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),4);
+        rv_dialog.setLayoutManager(gridLayoutManager);
+        rv_dialog.setAdapter(adapter);
         //nếu dialog là sửa
         if(type == 1){
             idAnh = _phanloai.getSrc();
@@ -177,9 +177,12 @@ public class FragmentChildChi_TabLayout extends Fragment {
             }
         });
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
+
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(getContext(),
+                        LinearLayoutManager.VERTICAL,false);
         rv.setHasFixedSize(true);
-        rv.setLayoutManager(gridLayoutManager);
+        rv.setLayoutManager(layoutManager);
         rv.setAdapter(adapter);
     }
     private boolean validate(String ed){
