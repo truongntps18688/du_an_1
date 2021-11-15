@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Du_an_1">
         <activity
+            android:name=".Fragment.trangchu_cachangmuc"
+            android:exported="false" />
+        <activity
+            android:name=".Fragment.trangchu_tongquan"
+            android:exported="false" />
+        <activity
             android:name=".NGUOI_DUNG.Nguoi_Dung"
             android:exported="false" />
         <activity
@@ -34,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Fragment.trang2"
+            android:name=".Fragment.trang_chu"
             android:exported="false" />
         <activity
             android:name=".Fragment.Fragment_PhanLoai"

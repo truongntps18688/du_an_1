@@ -1,6 +1,7 @@
 package com.example.du_an_1.Fragment;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -64,6 +65,7 @@ public class FragmentChildThu_TabLayout extends Fragment {
         });
     }
 
+
     @SuppressLint("ResourceType")
     //dialog
     protected void openDialog(final Context context, final int type){
@@ -71,18 +73,16 @@ public class FragmentChildThu_TabLayout extends Fragment {
         Button btnSave,btnCancel;
         EditText edName;
         ImageView imgCaterDialog;
-        RecyclerView rv_dialog;
+        RecyclerView item;
         Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_phanloai);
+        item = dialog.findViewById(R.id.ry_src_phanloai);
         edName = dialog.findViewById(R.id.ed_phanloai);
         btnCancel = dialog.findViewById(R.id.btnHuyDialogPH);
         btnSave = dialog.findViewById(R.id.btnLuuDialogPH);
         imgCaterDialog = dialog.findViewById(R.id.imgdialog_phanloai);
-        rv_dialog = dialog.findViewById(R.id.dialoglv_phanloai);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        //tạo danh sách chứa các ảnh trong dialog
         List<Integer> list = new ArrayList<>();
         list.add(R.drawable.anh1);  list.add(R.drawable.anh2);  list.add(R.drawable.anh3);
         list.add(R.drawable.anh4);  list.add(R.drawable.anh6);  list.add(R.drawable.anh7);
@@ -94,20 +94,26 @@ public class FragmentChildThu_TabLayout extends Fragment {
         list.add(R.drawable.anh21); list.add(R.drawable.anh26); list.add(R.drawable.anh27);
         list.add(R.drawable.anh25); list.add(R.drawable.anh28); list.add(R.drawable.anh29);
         list.add(R.drawable.anh30);
-
         //adapter ảnh
+        item.setVisibility(View.GONE);
+        imgCaterDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                item.setVisibility(View.VISIBLE);
+            }
+        });
         adapter_itemimgphanloai adapter = new adapter_itemimgphanloai(list, new adapter_itemimgphanloai.IItemimgphanloai() {
             //click ảnh trong rv show ra imageview
             @Override
             public void onClickListener(int anhID) {
                 idAnh = anhID;
                 imgCaterDialog.setImageResource(idAnh);
+                item.setVisibility(View.GONE);
             }
         });
-        rv_dialog.setAdapter(adapter);
+        item.setAdapter(adapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),4);
-        rv_dialog.setLayoutManager(gridLayoutManager);
-
+        item.setLayoutManager(gridLayoutManager);
         //nếu dialog là sửa
         if(type == 1){
             idAnh = _phanloai.getSrc();
@@ -171,7 +177,7 @@ public class FragmentChildThu_TabLayout extends Fragment {
             }
         });
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),1);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(gridLayoutManager);
         rv.setAdapter(adapter);

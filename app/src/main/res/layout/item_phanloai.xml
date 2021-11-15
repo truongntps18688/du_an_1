@@ -7,46 +7,49 @@
     android:id="@+id/SwipeRevealLayout"
     app:mode="same_level"
     android:layout_marginTop="10dp"
-    app:dragEdge="left">
+    app:dragEdge="right">
     <!-- Your secondary layout here -->
     <LinearLayout
         android:id="@+id/lnDelPhanLoai"
-        android:backgroundTint="#F44336"
+        android:backgroundTint="#B3F44336"
         android:background="@drawable/hieuung_phanloai"
-        android:layout_width="100dp"
-        android:layout_height="match_parent" >
+        android:layout_width="70dp"
+        android:layout_height="70dp" >
         <ImageView
             android:layout_margin="13dp"
             android:layout_gravity="center"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             app:srcCompat="@drawable/ic_baseline_delete_24"/>
     </LinearLayout>
     <!-- Your main layout here -->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:id="@+id/lnPH"
-        android:backgroundTint="#FF9800"
+        android:backgroundTint="#20F1D8"
         android:background="@drawable/hieuung_phanloai"
-        android:layout_height="wrap_content">
+        android:layout_height="70dp">
         <TextView
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:gravity="center"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
             android:maxLines="1"
             android:maxLength="10"
             android:id="@+id/tv_phanloai"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
             android:text="TextView" />
 
         <ImageView
-            android:layout_marginBottom="15dp"
+            android:paddingRight="10dp"
             android:layout_gravity="center"
             android:id="@+id/img_phanloai"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="10dp"
             app:srcCompat="@drawable/anh1" />
 
     </LinearLayout>

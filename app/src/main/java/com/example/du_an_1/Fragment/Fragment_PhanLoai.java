@@ -9,14 +9,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.example.du_an_1.Adapter.MyFragmentPagerAdapter;
 import com.example.du_an_1.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-// đổi tên từ trang 1 sang Fragment_PhanLoai
 public class Fragment_PhanLoai extends Fragment {
 
     TabLayout tabLayout;
@@ -28,7 +26,7 @@ public class Fragment_PhanLoai extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layout_phanloai,container,false);
+        return inflater.inflate(R.layout.layout_tab,container,false);
     }
 
     @Override
@@ -51,6 +49,7 @@ public class Fragment_PhanLoai extends Fragment {
                         break;
                 }
             }
-        });tabLayoutMediator.attach();
+        });
+        tabLayoutMediator.attach();
     }
 }

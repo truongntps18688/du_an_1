@@ -3,7 +3,10 @@ package com.example.du_an_1.NGUOI_DUNG;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentResultListener;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +47,14 @@ public class chinh_sua extends DialogFragment implements FragmentResultListener 
         sua = (Button) view.findViewById(R.id.sua_chinhsua);
         huy = (Button) view.findViewById(R.id.huy_chinhsua);
         Integer id = getArguments().getInt("id",-1);
-        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
+        getDialog().getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+        //ẩn mật khẩu kiểm tra
+        kt_mk.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        mk_new.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        //ẩn thanh
         mk_new.setVisibility(View.GONE);
         cauhoi_new.setVisibility(View.GONE);
         tl_new.setVisibility(View.GONE);

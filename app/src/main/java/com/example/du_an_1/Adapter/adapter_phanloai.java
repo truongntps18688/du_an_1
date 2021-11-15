@@ -35,8 +35,7 @@ public class adapter_phanloai extends RecyclerView.Adapter<adapter_phanloai.User
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_phanloai,
-                parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_phanloai,parent,false);
         return new UserViewHolder(view);
     }
     @SuppressLint("RecyclerView")

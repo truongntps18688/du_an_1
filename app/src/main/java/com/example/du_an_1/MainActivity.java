@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import com.example.du_an_1.Fragment.Gioi_Thieu;
 import com.example.du_an_1.NGUOI_DUNG.Nguoi_Dung;
 import com.example.du_an_1.Fragment.Fragment_PhanLoai;
-import com.example.du_an_1.Fragment.trang2;
+import com.example.du_an_1.Fragment.trang_chu;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
         // hiển thị trang fragment lên đầu tiên
         if(savedInstanceState == null){
-            Class fragmentclass = Fragment_PhanLoai.class;
+            Class fragmentclass = trang_chu.class;
             try {
                 Fragment fragment = (Fragment) fragmentclass.newInstance();
                 getSupportFragmentManager().beginTransaction().replace(R.id.may_layout_container,fragment).commit();
-                navigationView.getMenu().getItem(1).setChecked(true);
-                setTitle(navigationView.getMenu().getItem(1).getTitle());
+                navigationView.getMenu().getItem(0).setChecked(true);
+                setTitle(navigationView.getMenu().getItem(0).getTitle());
             }catch (Exception e){ }
 
         }
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Class fragmentclass;
         switch (item.getItemId()){
             case R.id.trang_chu:
-                fragmentclass = trang2.class;
+                fragmentclass = trang_chu.class;
                 break;
             case R.id.PHAN_LOAI:
                 fragmentclass = Fragment_PhanLoai.class;
