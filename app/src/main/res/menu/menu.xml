@@ -2,15 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/trang_chu"
+            android:id="@+id/TRANG_CHU"
             android:enabled="true"
             android:title="trang chủ"/>
+        <item
+            android:id="@+id/GIAO_DICH"
+            android:enabled="true"
+            android:title="Giao dịch"/>
         <item
             android:id="@+id/PHAN_LOAI"
             android:enabled="true"
             android:title="Phân Loại"/>
-
-
         <item android:title="Người dùng">
             <menu>
                 <group android:checkableBehavior="single">

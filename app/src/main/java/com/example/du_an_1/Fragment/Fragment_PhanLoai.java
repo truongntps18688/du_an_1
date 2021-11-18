@@ -34,7 +34,7 @@ public class Fragment_PhanLoai extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewPager2 = view.findViewById(R.id.my_viewpaper);
         tabLayout = view.findViewById(R.id.my_tab);
-        viewPager2.setAdapter( new MyFragmentPagerAdapter(this));
+        viewPager2.setAdapter( new MyFragmentPagerAdapter(this,1));
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab( TabLayout.Tab tab, int position) {

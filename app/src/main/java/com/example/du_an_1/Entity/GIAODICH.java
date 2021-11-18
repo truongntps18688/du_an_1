@@ -9,7 +9,7 @@ public class GIAODICH {
     private int id;
     private Date ngay;
     private String gio;
-    private Double tien;
+    private int tien;
     private String mota;
     private int phan_loai_id;
     private int trang_thai;
@@ -17,7 +17,7 @@ public class GIAODICH {
     public GIAODICH() {
     }
 
-    public GIAODICH(int id, Date ngay, String gio, Double tien, String mota, int phan_loai_id, int trang_thai) {
+    public GIAODICH(int id, Date ngay, String gio, int tien, String mota, int phan_loai_id, int trang_thai) {
         this.id = id;
         this.ngay = ngay;
         this.gio = gio;
@@ -26,7 +26,14 @@ public class GIAODICH {
         this.phan_loai_id = phan_loai_id;
         this.trang_thai = trang_thai;
     }
-
+    public GIAODICH(Date ngay, String gio, int tien, String mota, int phan_loai_id, int trang_thai) {
+        this.ngay = ngay;
+        this.gio = gio;
+        this.tien = tien;
+        this.mota = mota;
+        this.phan_loai_id = phan_loai_id;
+        this.trang_thai = trang_thai;
+    }
     public int getId() {
         return id;
     }
@@ -51,11 +58,11 @@ public class GIAODICH {
         this.gio = gio;
     }
 
-    public Double getTien() {
+    public int getTien() {
         return tien;
     }
 
-    public void setTien(Double tien) {
+    public void setTien(int tien) {
         this.tien = tien;
     }
 
