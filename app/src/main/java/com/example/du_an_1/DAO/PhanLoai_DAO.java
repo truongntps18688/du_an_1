@@ -21,7 +21,6 @@ public class PhanLoai_DAO {
         myDatabase = new MyDatabase(c);
     }
     public ArrayList<PHANLOAI> select(){
-        ImageView imageView;
 
         db = myDatabase.getReadableDatabase();
         ArrayList<PHANLOAI> ds = new ArrayList<>();

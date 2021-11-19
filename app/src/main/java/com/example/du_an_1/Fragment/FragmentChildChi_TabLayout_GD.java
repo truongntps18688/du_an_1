@@ -106,7 +106,7 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
         dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
         PhanLoai_DAO dao = new PhanLoai_DAO(getContext());
-        List<PHANLOAI> listPL = dao.select();
+        List<PHANLOAI> listPL = dao.select(0);
         if(listPL.size() == 0){
             //nếu chưa có danh sách phân loại thì không hiện thị recycleview
             item.setVisibility(View.GONE);
