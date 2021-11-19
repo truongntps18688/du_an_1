@@ -2,6 +2,7 @@ package com.example.du_an_1.DAO;
 
 import static com.example.du_an_1.utilities.contans.*;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -50,6 +51,18 @@ public class PhanLoai_DAO {
         cursor.close();
         return ds;
     }
+    @SuppressLint("Range")
+    public int getAnh(int id){
+        int _id = 0;
+        db = myDatabase.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+TABLE_PHANLOAI+" WHERE "
+                +COLUMN_PHANLOAI_ID+ " = ?", new String[]{String.valueOf(id)});
+        while (cursor.moveToNext()){
+             _id = cursor.getInt(cursor.getColumnIndex(COLUMN_PHANLOAI_HINH));
+        }
+        cursor.close();
+        return _id;
+    }
     public boolean insert(PHANLOAI phanloai ){
         db= myDatabase.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -72,6 +85,20 @@ public class PhanLoai_DAO {
         values.put(COLUMN_PHANLOAI_TRANG_THAI,phanloai.getTrangthai());
         int row = db.update(TABLE_PHANLOAI,values,COLUMN_PHANLOAI_ID + " = ?",new String[]{phanloai.getId() + ""});
         return (row > 0);
+    }
+    public PHANLOAI getItemPL(int _id){
+        PHANLOAI phanloai = null;
+        db = myDatabase.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+TABLE_PHANLOAI+" WHERE "
+                +COLUMN_PHANLOAI_ID+ " = ?", new String[]{String.valueOf(_id)});
+        while (cursor.moveToNext()){
+            int id = cursor.getInt(0);
+            int src = cursor.getInt(1);
+            String name = cursor.getString(2);
+            int trangthai = cursor.getInt(3);
+            phanloai = new PHANLOAI(id,src,name,trangthai);
+        }
+        return phanloai;
     }
     public int check(String _name) {
         db= myDatabase.getReadableDatabase();

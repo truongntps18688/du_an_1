@@ -110,7 +110,7 @@
             android:id="@+id/imgdialog_giaodich"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/anh1" />
+             />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ry_src_giaodich"

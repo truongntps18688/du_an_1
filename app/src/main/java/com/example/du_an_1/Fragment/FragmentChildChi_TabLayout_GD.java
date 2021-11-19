@@ -27,6 +27,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.du_an_1.Adapter.adapter_giaodich;
 import com.example.du_an_1.Adapter.adapter_itemimgphanloai;
 import com.example.du_an_1.Adapter.adapter_itemphanloai;
 import com.example.du_an_1.Adapter.adapter_phanloai;
@@ -56,7 +57,6 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
     SimpleDateFormat ctime = new SimpleDateFormat("hh:mm aa");
     SimpleDateFormat cDate = new SimpleDateFormat("dd-mm-YYYY");
 
-    private int idAnh = 0;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +87,6 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
     //dialog
     protected void openDialog(final Context context, final int type){
 
-        idAnh = R.drawable.anh1;
         Button btnSave,btnCancel;
         EditText edTien,edGhiChu;
         TextView tvNgay,tvGio,tvLoai;
@@ -108,22 +107,24 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
 
         PhanLoai_DAO dao = new PhanLoai_DAO(getContext());
         List<PHANLOAI> listPL = dao.select();
-
-
+        if(listPL.size() == 0){
+            //nếu chưa có danh sách phân loại thì không hiện thị recycleview
+            item.setVisibility(View.GONE);
+        }
         adapter_itemphanloai adapter = new adapter_itemphanloai(listPL, new adapter_itemphanloai.IItemimgphanloai() {
             @Override
             public void onClickListener(PHANLOAI item) {
-                //click vào rv
+                //click vào recycleview
                 _phanloai = item;
                 imgCaterDialog.setImageResource(_phanloai.getSrc());
                 tvLoai.setText(_phanloai.getName());
             }
-
         });
         item.setAdapter(adapter);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),4);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
         item.setLayoutManager(gridLayoutManager);
 
+        //bắt sự kiện click giờ
         tvGio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,9 +154,11 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
 
                 //hien thi thoi gian truoc
                 timePickerDialog.updateTime(hour,_minute);
+                //show dialog
                 timePickerDialog.show();
             }
         });
+        //bắt sự kiện click ngày
         tvNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,49 +183,50 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
         });
 //        nếu dialog là sửa
         if(type == 1){
-            idAnh = _phanloai.getSrc();
             edGhiChu.setText(giaodich.getMota());
             edTien.setText(giaodich.getTien()+"");
             tvGio.setText(giaodich.getGio());
             tvNgay.setText(cDate.format(giaodich.getNgay()));
             tvLoai.setText(_phanloai.getName());
-            imgCaterDialog.setImageResource(idAnh);
+            imgCaterDialog.setImageResource(_phanloai.getSrc());
         }
+        //button huỷ
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
             }
         });
+        //button lưu
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int img = idAnh;
+
                 String ghichu = edGhiChu.getText().toString();
                 String tien = edTien.getText().toString();
                 String gio = tvGio.getText().toString();
                 String ngay = tvNgay.getText().toString();
                 String loai = tvLoai.getText().toString();
 
+                //check giá trị
                 if(validate(ghichu,tien,gio,ngay,loai)){
-                    GIAODICH _giaodich = null;
                     try {
-                        _giaodich = new GIAODICH(cDate.parse(ngay),gio,Integer.parseInt(tien),ghichu,_phanloai.getId(),0);
+                        giaodich.setGio(gio);
+                        giaodich.setNgay(cDate.parse(ngay));
+                        giaodich.setTien(Integer.parseInt(tien));
+                        giaodich.setMota(ghichu);
+                        giaodich.setPhan_loai_id(_phanloai.getId());
+                        giaodich.setTrang_thai(0);
                     } catch (ParseException e) {
-                        e.printStackTrace();
                     }
                     if(type == 1){
-                        _giaodich.setId(_phanloai.getId());
-                        dao.updata(phanloai);
-                        if(dao.updata(phanloai)){
+                        if(giaoDich_dao.updata(giaodich)){
                             Toast.makeText(getContext(), "Sửa thành công", Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(getContext(), "Sửa thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }else{
-                        if(dao.check(name) > 0){
-                            Toast.makeText(getContext(), "đã tồn tại ", Toast.LENGTH_SHORT).show();
-                        }else if(dao.insert(phanloai)){
+                        if(giaoDich_dao.insert(giaodich)){
                             Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
@@ -238,19 +242,21 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
         dialog.show();
     }
     private void updateData(){
+        giaoDich_dao = new GiaoDich_DAO(getContext());
         dao = new PhanLoai_DAO(getContext());
-        List<PHANLOAI> list = dao.select(0);
-        adapter_phanloai adapter = new adapter_phanloai(list, new adapter_phanloai.Iphanloai() {
+        List<GIAODICH> list = giaoDich_dao.select(0);
+        adapter_giaodich adapter = new adapter_giaodich(getContext(),list, new adapter_giaodich.Igiaodich() {
             //bắt sự kiện click trên rv
             @Override
-            public void onClickListener(PHANLOAI phanloai,int type) {
-                _phanloai = phanloai;
+            public void onClickListener(GIAODICH _giaodich,int type) {
+                giaodich = _giaodich;
                 if(type == 0) {
+                 _phanloai = dao.getItemPL(_giaodich.getPhan_loai_id());
                     //show dialog sửa
                     openDialog(getContext(), 1);
                 }else {
                     //xoá
-                    del(_phanloai);
+                    del(giaodich);
                 }
             }
         });
@@ -262,15 +268,15 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
     }
     private boolean validate(String ghichu,String tien,String gio,String ngay,String loai){
         if(ghichu.length() == 0 || tien.length() == 0 || gio.length() == 0 || ngay.length() == 0
-        || loai.equalsIgnoreCase("Caterory")){
+        || loai.equalsIgnoreCase("Loại: ")){
             Toast.makeText(getContext(), "Chưa nhập đầy đủ thông tin ", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
-    private void del(PHANLOAI __phanloai){
-        dao = new PhanLoai_DAO(getContext());
-        if(dao.delete(__phanloai.getId())){
+    private void del(GIAODICH giaodich){
+        giaoDich_dao = new GiaoDich_DAO(getContext());
+        if(giaoDich_dao.delete(giaodich.getId())){
             Toast.makeText(getContext(), "Xoá thành công", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(getContext(), "Xoá thất bại", Toast.LENGTH_SHORT).show();

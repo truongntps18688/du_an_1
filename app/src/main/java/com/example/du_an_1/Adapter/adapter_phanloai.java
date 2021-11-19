@@ -89,6 +89,6 @@ public class adapter_phanloai extends RecyclerView.Adapter<adapter_phanloai.User
         }
     }
     public interface Iphanloai{
-        public void onClickListener(PHANLOAI phanloai,int type);
+         void onClickListener(PHANLOAI phanloai,int type);
     }
 }
