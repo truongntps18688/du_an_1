@@ -22,7 +22,7 @@
         <TextView
             android:gravity="center"
             android:textSize="30dp"
-            android:hint="dd/mm/yyyy"
+            android:hint="dd/MM/yyyy"
             android:id="@+id/tvNgay_giaodich"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -99,11 +99,17 @@
         android:layout_width="match_parent"
         android:layout_height="70dp">
         <TextView
-            android:id="@+id/tvLoai"
             android:gravity="center"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:text="Loại: "
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/tvLoai"
+            android:gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
             android:textSize="20dp"
             android:textColor="@color/black"/>
         <ImageView

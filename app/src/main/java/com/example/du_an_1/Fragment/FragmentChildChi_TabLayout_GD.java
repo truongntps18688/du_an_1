@@ -53,9 +53,10 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
     GiaoDich_DAO giaoDich_dao;
     PHANLOAI _phanloai;
     String time,_date;
-    int hour,_minute,day,month,year;
+    int hour,_minute;
+    String year,month,day;
     SimpleDateFormat ctime = new SimpleDateFormat("hh:mm aa");
-    SimpleDateFormat cDate = new SimpleDateFormat("dd-mm-YYYY");
+    SimpleDateFormat cDate = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,7 +87,6 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
     @SuppressLint("ResourceType")
     //dialog
     protected void openDialog(final Context context, final int type){
-
         Button btnSave,btnCancel;
         EditText edTien,edGhiChu;
         TextView tvNgay,tvGio,tvLoai;
@@ -126,8 +126,27 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
 
         //bắt sự kiện click giờ
         tvGio.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                if(type == 0){
+                    if(tvGio.length() == 0){
+                        Calendar c = Calendar.getInstance();
+                        hour = c.get(Calendar.HOUR_OF_DAY);
+                        _minute = c.get(Calendar.MINUTE);
+
+                    }
+                }else{
+                    try {
+                        Date d = ctime.parse(tvGio.getText().toString());
+                        String time = new SimpleDateFormat("HH:mm").format(d);
+                        hour = Integer.parseInt(time.substring(0,2));
+                        _minute = Integer.parseInt(time.substring(3,5));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                }
                 TimePickerDialog timePickerDialog = new TimePickerDialog(
                         getContext(),
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
@@ -138,10 +157,10 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
                                 calendar.set(0,0,0,hourOfDay,minute);
                                 hour = hourOfDay;
                                 _minute = minute;
-                                 time = hour + ":" + _minute;
+                                time = hour + ":" + _minute;
                                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                                 try {
-                                    Date  date = sdf.parse(time);
+                                    Date date = sdf.parse(time);
                                     time = ctime.format(date);
                                     tvGio.setText(time);
                                 } catch (ParseException e) {
@@ -162,22 +181,41 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
         tvNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(type == 0){
+                    if(tvNgay.length() == 0){
+                        Calendar c = Calendar.getInstance();
+                        year = String.valueOf(c.get(Calendar.YEAR));
+                        month = String.valueOf(c.get(Calendar.MONTH) + 1);
+                        day = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+                    }
+                }else{
+                    String time = tvNgay.getText().toString();
+                    year = time.substring(6,10);
+                    month = time.substring(3,5);
+                    day = time.substring(0,2);
+                }
                 Calendar calendar = Calendar.getInstance();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int _year, int _month, int dayOfMonth) {
-                        calendar.set(year, month, dayOfMonth);
-                        year = _year;
-                        month = _month + 1;
-                        day = dayOfMonth;
-                        _date = day + "-" + month + "-" + year;
+                        calendar.set(_year, _month, dayOfMonth);
+                        year = String.valueOf(_year);
+                        month = String.valueOf(_month + 1);
+                        day = String.valueOf(dayOfMonth);
+                        if(month.length()<2){
+                            month = "0" + month;
+                        }
+                        if(day.length()<2){
+                            day = "0" + day;
+                            Log.i("yeah",day);
+                        }
+                        _date = day + "/" + month + "/" + year;
                         tvNgay.setText(_date);
                     }
-                    ;
                 }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.updateDate(year,month,day);
+                datePickerDialog.updateDate(Integer.parseInt(year),Integer.parseInt(month) - 1,Integer.parseInt(day));
                 datePickerDialog.show();
             }
         });
@@ -201,23 +239,26 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String ghichu = edGhiChu.getText().toString();
                 String tien = edTien.getText().toString();
                 String gio = tvGio.getText().toString();
                 String ngay = tvNgay.getText().toString();
                 String loai = tvLoai.getText().toString();
-
                 //check giá trị
                 if(validate(ghichu,tien,gio,ngay,loai)){
                     try {
+                        if(type == 0){
+                            giaodich = new GIAODICH();
+                        }
+                        giaodich.setTien(Integer.parseInt(tien));
                         giaodich.setGio(gio);
                         giaodich.setNgay(cDate.parse(ngay));
-                        giaodich.setTien(Integer.parseInt(tien));
                         giaodich.setMota(ghichu);
                         giaodich.setPhan_loai_id(_phanloai.getId());
                         giaodich.setTrang_thai(0);
-                    } catch (ParseException e) {
+                    } catch (Exception e) {
+                        Toast.makeText(getContext(), "Số tiền không bao gồm chữ", Toast.LENGTH_LONG).show();
+                        return;
                     }
                     if(type == 1){
                         if(giaoDich_dao.updata(giaodich)){
@@ -251,7 +292,7 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
             public void onClickListener(GIAODICH _giaodich,int type) {
                 giaodich = _giaodich;
                 if(type == 0) {
-                 _phanloai = dao.getItemPL(_giaodich.getPhan_loai_id());
+                    _phanloai = dao.getItemPL(_giaodich.getPhan_loai_id());
                     //show dialog sửa
                     openDialog(getContext(), 1);
                 }else {
@@ -268,7 +309,7 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
     }
     private boolean validate(String ghichu,String tien,String gio,String ngay,String loai){
         if(ghichu.length() == 0 || tien.length() == 0 || gio.length() == 0 || ngay.length() == 0
-        || loai.equalsIgnoreCase("Loại: ")){
+                || loai.length() == 0){
             Toast.makeText(getContext(), "Chưa nhập đầy đủ thông tin ", Toast.LENGTH_SHORT).show();
             return false;
         }

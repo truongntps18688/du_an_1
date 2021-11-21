@@ -22,7 +22,11 @@
         <entry key="..\:/Android/du_an_1/app/src/main/res/drawable/bogoc_login.xml" value="0.15989583333333332" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/drawable/hieuung_phanloai.xml" value="0.290625" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/drawable/item_phanloai.xml" value="0.28615384615384615" />
+        <entry key="..\:/Android/du_an_1/app/src/main/res/layout/activity_chinh_sua.xml" value="0.264" />
+        <entry key="..\:/Android/du_an_1/app/src/main/res/layout/activity_dang_ky.xml" value="0.27447916666666666" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/layout/activity_gioi_thieu.xml" value="0.14375" />
+        <entry key="..\:/Android/du_an_1/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android/du_an_1/app/src/main/res/layout/activity_main_hitde.xml" value="0.27447916666666666" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/layout/activity_nguoi_dung.xml" value="0.14375" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/layout/activity_trang2.xml" value="0.27447916666666666" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/layout/activity_trangchu_cachangmuc.xml" value="0.27447916666666666" />
@@ -33,6 +37,7 @@
         <entry key="..\:/Android/du_an_1/app/src/main/res/layout/item_imgphanloai.xml" value="0.27447916666666666" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/layout/item_phanloai.xml" value="0.27447916666666666" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/layout/item_rv_phanloai.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android/du_an_1/app/src/main/res/layout/layout_tab.xml" value="0.14375" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/layout/layoutchild_phanloai.xml" value="0.27447916666666666" />
         <entry key="..\:/Android/du_an_1/app/src/main/res/menu/menu.xml" value="0.27447916666666666" />
         <entry key="..\:/android/android/app/src/main/res/drawable/bogoc_button_login.xml" value="0.26614583333333336" />

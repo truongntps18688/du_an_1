@@ -58,7 +58,7 @@ public class adapter_giaodich extends RecyclerView.Adapter<adapter_giaodich.User
 
         holder.tvTien.setText(giaodich.getTien()+"");
         holder.tvGio.setText(giaodich.getGio());
-        holder.tvNgay.setText(new SimpleDateFormat("dd-mm-YYYY").format(giaodich.getNgay()));
+        holder.tvNgay.setText(new SimpleDateFormat("dd/MM/yyyy").format(giaodich.getNgay()));
         holder.img.setImageResource(phanLoai_dao.getAnh(giaodich.getPhan_loai_id()));
         //nhấn giữ trên item trong recycleview
         holder.ln.setOnLongClickListener(new View.OnLongClickListener() {
