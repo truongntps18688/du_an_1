@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="lamnhat">#38b6ff</color>
+    <color name="xamnhat">#ebebeb</color>
+    <color name="xanhnhat">#badef7</color>  
+    <color name="dotuoi">#ff1616</color>
+    <color name="tongquan">#AAAAAA</color>
 </resources>

@@ -103,8 +103,8 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
         tvGio = dialog.findViewById(R.id.tvGio_giaodich);
         btnCancel = dialog.findViewById(R.id.btnHuyDialogGD);
         btnSave = dialog.findViewById(R.id.btnLuuDialogGD);
-        dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         PhanLoai_DAO dao = new PhanLoai_DAO(getContext());
         List<PHANLOAI> listPL = dao.select(0);
         if(listPL.size() == 0){
@@ -308,7 +308,7 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
         rv.setAdapter(adapter);
     }
     private boolean validate(String ghichu,String tien,String gio,String ngay,String loai){
-        if(ghichu.length() == 0 || tien.length() == 0 || gio.length() == 0 || ngay.length() == 0
+        if(tien.length() == 0 || gio.length() == 0 || ngay.length() == 0
                 || loai.length() == 0){
             Toast.makeText(getContext(), "Chưa nhập đầy đủ thông tin ", Toast.LENGTH_SHORT).show();
             return false;

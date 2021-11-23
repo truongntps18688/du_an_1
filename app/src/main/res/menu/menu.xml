@@ -13,6 +13,10 @@
             android:id="@+id/PHAN_LOAI"
             android:enabled="true"
             android:title="Phân Loại"/>
+        <item
+            android:id="@+id/THONG_KE"
+            android:enabled="true"
+            android:title="Thống Kê"/>
         <item android:title="Người dùng">
             <menu>
                 <group android:checkableBehavior="single">

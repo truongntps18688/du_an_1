@@ -7,26 +7,19 @@ import static com.example.du_an_1.utilities.contans.COLUMN_GIAODICH_PHANLOAI_ID;
 import static com.example.du_an_1.utilities.contans.COLUMN_GIAODICH_PHANLOAI_TRANGTHAI;
 import static com.example.du_an_1.utilities.contans.COLUMN_GIAODICH_TIEN;
 import static com.example.du_an_1.utilities.contans.COLUMN_GIAODICH_TIME;
-import static com.example.du_an_1.utilities.contans.COLUMN_PHANLOAI_HINH;
-import static com.example.du_an_1.utilities.contans.COLUMN_PHANLOAI_ID;
-import static com.example.du_an_1.utilities.contans.COLUMN_PHANLOAI_NAME;
-import static com.example.du_an_1.utilities.contans.COLUMN_PHANLOAI_TRANG_THAI;
 import static com.example.du_an_1.utilities.contans.TABLE_GIAODICH;
-import static com.example.du_an_1.utilities.contans.TABLE_PHANLOAI;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.ImageView;
+import android.util.Log;
 
 import com.example.du_an_1.Entity.GIAODICH;
-import com.example.du_an_1.Entity.PHANLOAI;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class GiaoDich_DAO {
     com.example.du_an_1.Database.MyDatabase myDatabase;
@@ -55,8 +48,7 @@ public class GiaoDich_DAO {
     public ArrayList<GIAODICH> select(int _trangthai){
         db = myDatabase.getReadableDatabase();
         ArrayList<GIAODICH> ds = new ArrayList<>();
-        Cursor cursor = db.rawQuery("select * from "+TABLE_GIAODICH+" WHERE "
-                +COLUMN_GIAODICH_PHANLOAI_TRANGTHAI+ " = ?", new String[]{String.valueOf(_trangthai)});
+        Cursor cursor = db.rawQuery("select * from "+TABLE_GIAODICH+" WHERE "+COLUMN_GIAODICH_PHANLOAI_TRANGTHAI+ " = ?", new String[]{String.valueOf(_trangthai)});
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);
             Long ngay = cursor.getLong(1);
@@ -99,4 +91,21 @@ public class GiaoDich_DAO {
         int row = db.update(TABLE_GIAODICH,values,COLUMN_GIAODICH_ID + " = ?",new String[]{giaoDich.getId() + ""});
         return (row > 0);
     }
+    public Long tong(Long truoc, Long sau, int phanloai){
+        db = myDatabase.getReadableDatabase();
+        List<Long> ds = new ArrayList<>();
+        String sql = "SELECT SUM("+COLUMN_GIAODICH_TIEN+") as doanhthu FROM "+TABLE_GIAODICH+"" +
+                " WHERE "+COLUMN_GIAODICH_PHANLOAI_TRANGTHAI+" = ? AND "+COLUMN_GIAODICH_NGAY+" BETWEEN ? AND ?";
+        Cursor cursor = db.rawQuery(sql,new String[]{String.valueOf(phanloai), String.valueOf(truoc), String.valueOf(sau)});
+        while (cursor.moveToNext()){
+            try {
+                Long a = cursor.getLong(0);
+                ds.add(a);
+            }catch (Exception e){
+                ds.add(0L);
+            }
+        }
+        return ds.get(0);
+    }
+
 }

@@ -103,8 +103,8 @@ public class FragmentChildThu_TabLayout_GD extends Fragment {
         tvGio = dialog.findViewById(R.id.tvGio_giaodich);
         btnCancel = dialog.findViewById(R.id.btnHuyDialogGD);
         btnSave = dialog.findViewById(R.id.btnLuuDialogGD);
-        dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         PhanLoai_DAO dao = new PhanLoai_DAO(getContext());
         List<PHANLOAI> listPL = dao.select(1);
         if(listPL.size() == 0){

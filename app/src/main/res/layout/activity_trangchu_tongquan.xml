@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragment.trangchu_tongquan"
-    android:background="@color/black"
+    android:background="@color/white"
     android:padding="20dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="160dp"
         android:layout_gravity="center_horizontal"
         app:cardCornerRadius="20dp">
 
@@ -24,20 +24,76 @@
             android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"></TextView>
-
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/activity_main_piechart"
+        <az.plainpie.PieView
+            android:layout_marginTop="20dp"
+            android:id="@+id/pieView_ngay"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:layout_marginBottom="5dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Thu nhập hôm nay: "
+                    android:textSize="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/thu_nhap_ngay"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="...............đ"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:textColor="@color/black">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Đã sử dụng: "
+                    android:textSize="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/su_dung_ngay"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="...............đ"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black">
+                </TextView>
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="160dp"
         android:layout_gravity="center_horizontal"
         app:cardCornerRadius="20dp">
 
@@ -50,11 +106,144 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"></TextView>
         <az.plainpie.PieView
-            android:id="@+id/pieView"
+            android:layout_marginTop="20dp"
+            android:id="@+id/pieView_tuan"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:layout_marginBottom="5dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Thu nhập của tuần: "
+                    android:textSize="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/thu_nhap_tuan"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="...............đ"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:textColor="@color/black">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Đã sử dụng: "
+                    android:textSize="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/su_dung_tuan"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="...............đ"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_gravity="center_horizontal"
+        app:cardCornerRadius="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tháng này"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"></TextView>
+        <az.plainpie.PieView
+            android:id="@+id/pieView_thang"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Thu nhập của tháng: "
+                    android:textSize="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/thu_nhap_thang"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="...............đ"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:textColor="@color/black">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Đã sử dụng: "
+                    android:textSize="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/su_dung_thang"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="...............đ"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

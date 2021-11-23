@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.example.du_an_1.Fragment.Fragment_GiaoDich;
 import com.example.du_an_1.Fragment.Gioi_Thieu;
+import com.example.du_an_1.Fragment.thong_ke;
 import com.example.du_an_1.NGUOI_DUNG.Nguoi_Dung;
 import com.example.du_an_1.Fragment.Fragment_PhanLoai;
 import com.example.du_an_1.Fragment.trang_chu;
@@ -78,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.PHAN_LOAI:
                 fragmentclass = Fragment_PhanLoai.class;
+                break;
+            case R.id.THONG_KE:
+                fragmentclass = thong_ke.class;
                 break;
             case R.id.USER:
                 fragmentclass = Nguoi_Dung.class;
