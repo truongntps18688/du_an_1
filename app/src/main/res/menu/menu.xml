@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/TRANG_CHU"
+            android:enabled="true"
+            android:title="trang chủ"/>
+        <item
+            android:id="@+id/GIAO_DICH"
+            android:enabled="true"
+            android:title="Giao dịch"/>
+        <item
+            android:id="@+id/PHAN_LOAI"
+            android:enabled="true"
+            android:title="Phân Loại"/>
+        <item
+            android:id="@+id/THONG_KE"
+            android:enabled="true"
+            android:title="Thống Kê"/>
+        <item android:title="Người dùng">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/USER"
+                        android:enabled="true"
+                        android:title="Người dùng"/>
+                    <item
+                        android:id="@+id/DX"
+                        android:enabled="true"
+                        android:title="Đăng xuất"/>
+                    <item
+                        android:id="@+id/GT"
+                        android:enabled="true"
+                        android:title="Giới thiệu"/>
+                </group>
+            </menu>
+        </item>
+    </group>
+</menu>

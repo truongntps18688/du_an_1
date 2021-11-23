@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/SwipeRevealLayout"
+    app:mode="same_level"
+    android:layout_marginTop="10dp"
+    app:dragEdge="right">
+    <!-- Your secondary layout here -->
+    <LinearLayout
+        android:id="@+id/lnDelPhanLoai"
+        android:backgroundTint="#B3F44336"
+        android:background="@drawable/hieuung"
+        android:layout_width="70dp"
+        android:layout_height="70dp" >
+        <ImageView
+            android:layout_margin="13dp"
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/ic_baseline_delete_24"/>
+    </LinearLayout>
+    <!-- Your main layout here -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/lnPH"
+
+        android:background="@drawable/hieuung"
+        android:layout_height="70dp">
+        <ImageView
+            android:paddingRight="10dp"
+            android:layout_gravity="center"
+            android:id="@+id/img_phanloai"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@drawable/anh1" />
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+
+            android:maxLines="1"
+            android:maxLength="10"
+            android:id="@+id/tv_phanloai"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+
+
+    </LinearLayout>
+</com.chauthai.swipereveallayout.SwipeRevealLayout>
