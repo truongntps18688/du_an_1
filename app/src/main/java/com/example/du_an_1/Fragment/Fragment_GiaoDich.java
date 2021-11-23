@@ -1,21 +1,21 @@
 package com.example.du_an_1.Fragment;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.du_an_1.Adapter.MyFragmentPagerAdapter;
 import com.example.du_an_1.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class Fragment_PhanLoai extends Fragment {
+public class Fragment_GiaoDich extends Fragment {
 
     TabLayout tabLayout;
     ViewPager2 viewPager2;
@@ -34,7 +34,7 @@ public class Fragment_PhanLoai extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewPager2 = view.findViewById(R.id.my_viewpaper);
         tabLayout = view.findViewById(R.id.my_tab);
-        viewPager2.setAdapter( new MyFragmentPagerAdapter(this,1));
+        viewPager2.setAdapter( new MyFragmentPagerAdapter(this,2));
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab( TabLayout.Tab tab, int position) {

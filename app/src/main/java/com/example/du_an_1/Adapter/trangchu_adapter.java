@@ -3,9 +3,6 @@ package com.example.du_an_1.Adapter;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.du_an_1.Fragment.FragmentChildChi_TabLayout;
-import com.example.du_an_1.Fragment.FragmentChildThu_TabLayout;
-import com.example.du_an_1.Fragment.Fragment_PhanLoai;
 import com.example.du_an_1.Fragment.trang_chu;
 import com.example.du_an_1.Fragment.trangchu_cachangmuc;
 import com.example.du_an_1.Fragment.trangchu_tongquan;

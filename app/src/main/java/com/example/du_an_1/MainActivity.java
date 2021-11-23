@@ -12,6 +12,7 @@ import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.du_an_1.Fragment.Fragment_GiaoDich;
 import com.example.du_an_1.Fragment.Gioi_Thieu;
 import com.example.du_an_1.NGUOI_DUNG.Nguoi_Dung;
 import com.example.du_an_1.Fragment.Fragment_PhanLoai;
@@ -69,8 +70,11 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = null;
         Class fragmentclass;
         switch (item.getItemId()){
-            case R.id.trang_chu:
+            case R.id.TRANG_CHU:
                 fragmentclass = trang_chu.class;
+                break;
+            case R.id.GIAO_DICH:
+                fragmentclass = Fragment_GiaoDich.class;
                 break;
             case R.id.PHAN_LOAI:
                 fragmentclass = Fragment_PhanLoai.class;

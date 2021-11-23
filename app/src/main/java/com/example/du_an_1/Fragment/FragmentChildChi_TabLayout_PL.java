@@ -4,22 +4,29 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.du_an_1.Adapter.adapter_itemimgphanloai;
@@ -29,15 +36,16 @@ import com.example.du_an_1.Entity.PHANLOAI;
 import com.example.du_an_1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentChildThu_TabLayout extends Fragment {
+public class FragmentChildChi_TabLayout_PL extends Fragment {
     RecyclerView rv;
     FloatingActionButton fab;
     PhanLoai_DAO dao;
     PHANLOAI _phanloai;
-    int idAnh;
+    private int idAnh = 0;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +72,6 @@ public class FragmentChildThu_TabLayout extends Fragment {
             }
         });
     }
-
-
     @SuppressLint("ResourceType")
     //dialog
     protected void openDialog(final Context context, final int type){
@@ -82,6 +88,7 @@ public class FragmentChildThu_TabLayout extends Fragment {
         btnSave = dialog.findViewById(R.id.btnLuuDialogPH);
         imgCaterDialog = dialog.findViewById(R.id.imgdialog_phanloai);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
 
         List<Integer> list = new ArrayList<>();
         list.add(R.drawable.anh1);  list.add(R.drawable.anh2);  list.add(R.drawable.anh3);
@@ -126,14 +133,13 @@ public class FragmentChildThu_TabLayout extends Fragment {
                 dialog.dismiss();
             }
         });
-
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = edName.getText().toString();
                 int img = idAnh;
                 dao = new PhanLoai_DAO(getContext());
-                PHANLOAI phanloai = new PHANLOAI(img,name,1);
+                PHANLOAI phanloai = new PHANLOAI(img,name,0);
                 if(validate(name)){
                     if(type == 1){
                         phanloai.setId(_phanloai.getId());
@@ -161,7 +167,7 @@ public class FragmentChildThu_TabLayout extends Fragment {
     }
     private void updateData(){
         dao = new PhanLoai_DAO(getContext());
-        List<PHANLOAI> list = dao.select(1);
+        List<PHANLOAI> list = dao.select(0);
         adapter_phanloai adapter = new adapter_phanloai(list, new adapter_phanloai.Iphanloai() {
             //bắt sự kiện click trên rv
             @Override
@@ -198,5 +204,6 @@ public class FragmentChildThu_TabLayout extends Fragment {
         }
         updateData();
     }
+
 
 }

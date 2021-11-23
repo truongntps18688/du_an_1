@@ -23,6 +23,7 @@ import java.util.List;
 public class trangchu_cachangmuc extends Fragment {
     private BarChart barchart;
     @Override
+
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }

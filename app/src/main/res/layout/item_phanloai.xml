@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/lnDelPhanLoai"
         android:backgroundTint="#B3F44336"
-        android:background="@drawable/hieuung_phanloai"
+        android:background="@drawable/hieuung"
         android:layout_width="70dp"
         android:layout_height="70dp" >
         <ImageView
@@ -28,7 +28,7 @@
         android:orientation="horizontal"
         android:id="@+id/lnPH"
         android:backgroundTint="#20F1D8"
-        android:background="@drawable/hieuung_phanloai"
+        android:background="@drawable/hieuung"
         android:layout_height="70dp">
         <TextView
             android:textColor="@color/white"
