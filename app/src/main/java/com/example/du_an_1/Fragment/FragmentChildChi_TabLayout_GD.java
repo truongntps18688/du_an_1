@@ -107,23 +107,33 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         PhanLoai_DAO dao = new PhanLoai_DAO(getContext());
         List<PHANLOAI> listPL = dao.select(0);
-        if(listPL.size() == 0){
-            //nếu chưa có danh sách phân loại thì không hiện thị recycleview
-            item.setVisibility(View.GONE);
-        }
         adapter_itemphanloai adapter = new adapter_itemphanloai(listPL, new adapter_itemphanloai.IItemimgphanloai() {
             @Override
-            public void onClickListener(PHANLOAI item) {
+            public void onClickListener(PHANLOAI _item) {
                 //click vào recycleview
-                _phanloai = item;
+                _phanloai = _item;
                 imgCaterDialog.setImageResource(_phanloai.getSrc());
                 tvLoai.setText(_phanloai.getName());
+                item.setVisibility(View.GONE);
             }
         });
         item.setAdapter(adapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
         item.setLayoutManager(gridLayoutManager);
-
+        item.setVisibility(View.GONE);
+        //bắt sự kiện click image hiện rv
+        imgCaterDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listPL.size() == 0){
+                    //nếu chưa có danh sách phân loại thì không hiện thị recycleview
+                    item.setVisibility(View.GONE);
+                }else{
+                    //nếu có danh sách phân loại thì hiện thị recycleview
+                    item.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         //bắt sự kiện click giờ
         tvGio.setOnClickListener(new View.OnClickListener() {
 
@@ -251,6 +261,10 @@ public class FragmentChildChi_TabLayout_GD extends Fragment {
                             giaodich = new GIAODICH();
                         }
                         giaodich.setTien(Integer.parseInt(tien));
+                        if(tien.startsWith("0")){
+                            Toast.makeText(getContext(), "Số tiền không bắt đầu bằng số 0", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         giaodich.setGio(gio);
                         giaodich.setNgay(cDate.parse(ngay));
                         giaodich.setMota(ghichu);

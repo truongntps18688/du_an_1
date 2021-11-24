@@ -100,12 +100,12 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:id="@+id/ln4"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@id/ln3">
         <TextView
-            android:gravity="right|center"
+            android:gravity="right|top"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:text="Ghi chú: "
@@ -113,9 +113,10 @@
             android:textColor="@color/black"/>
 
         <EditText
+            android:gravity="top"
             android:id="@+id/edGhiChu_giaodich"
             android:layout_width="290dp"
-            android:layout_height="match_parent"
+            android:layout_height="100dp"
             android:maxLines="1"
             android:background="@drawable/vien_textview"
             android:maxLength="10"
@@ -155,7 +156,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ry_src_giaodich"
         android:layout_width="380dp"
-        android:layout_height="224dp"
+        android:layout_height="200dp"
         android:layout_below="@id/ln5"
         android:layout_gravity="center"
         android:layout_marginLeft="2dp"

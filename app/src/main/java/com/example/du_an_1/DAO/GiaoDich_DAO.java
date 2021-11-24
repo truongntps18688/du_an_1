@@ -22,11 +22,11 @@ import java.util.Date;
 import java.util.List;
 
 public class GiaoDich_DAO {
-    com.example.du_an_1.Database.MyDatabase myDatabase;
+    com.example.du_an_1.dataBase.MyDatabase myDatabase;
     SQLiteDatabase db;
 
     public GiaoDich_DAO(Context c){
-        myDatabase = new com.example.du_an_1.Database.MyDatabase(c);
+        myDatabase = new com.example.du_an_1.dataBase.MyDatabase(c);
     }
     public ArrayList<GIAODICH> select(){
         db = myDatabase.getReadableDatabase();
@@ -45,6 +45,24 @@ public class GiaoDich_DAO {
         cursor.close();
         return ds;
     }
+    public ArrayList<GIAODICH> getGD_PL(int _idPL){
+        db = myDatabase.getReadableDatabase();
+        ArrayList<GIAODICH> ds = new ArrayList<>();
+        Cursor cursor = db.rawQuery("select * from "+TABLE_GIAODICH+" WHERE "+COLUMN_GIAODICH_PHANLOAI_ID+ " = ?", new String[]{String.valueOf(_idPL)});
+        while (cursor.moveToNext()){
+            int id = cursor.getInt(0);
+            Long ngay = cursor.getLong(1);
+            String gio = cursor.getString(2);
+            int tien = cursor.getInt(3);
+            String mota = cursor.getString(4);
+            int id_phanloai = cursor.getInt(5);
+            int trangthai = cursor.getInt(6);
+            ds.add(new GIAODICH(id,new Date(ngay),gio,tien,mota,id_phanloai,trangthai));
+        }
+        cursor.close();
+        return ds;
+    }
+
     public ArrayList<GIAODICH> select(int _trangthai){
         db = myDatabase.getReadableDatabase();
         ArrayList<GIAODICH> ds = new ArrayList<>();

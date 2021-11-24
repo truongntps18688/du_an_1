@@ -8,9 +8,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.ImageView;
-
-import com.example.du_an_1.Database.MyDatabase;
 import com.example.du_an_1.Entity.PHANLOAI;
+import com.example.du_an_1.dataBase.MyDatabase;
+
 import java.util.ArrayList;
 
 public class PhanLoai_DAO {
@@ -76,6 +76,7 @@ public class PhanLoai_DAO {
         int row = db.delete(TABLE_PHANLOAI,COLUMN_PHANLOAI_ID + " = ? ",new String[]{ id +""});
         return (row > 0);
     }
+
     public boolean updata(PHANLOAI phanloai){
         db= myDatabase.getWritableDatabase();
         ContentValues values = new ContentValues();

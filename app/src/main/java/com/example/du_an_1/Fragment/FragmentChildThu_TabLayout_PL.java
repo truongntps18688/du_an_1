@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -24,7 +25,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.du_an_1.Adapter.adapter_itemimgphanloai;
 import com.example.du_an_1.Adapter.adapter_phanloai;
+import com.example.du_an_1.DAO.GiaoDich_DAO;
 import com.example.du_an_1.DAO.PhanLoai_DAO;
+import com.example.du_an_1.Entity.GIAODICH;
 import com.example.du_an_1.Entity.PHANLOAI;
 import com.example.du_an_1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -191,12 +194,41 @@ public class FragmentChildThu_TabLayout_PL extends Fragment {
     }
     private void del(PHANLOAI __phanloai){
         dao = new PhanLoai_DAO(getContext());
-        if(dao.delete(__phanloai.getId())){
-            Toast.makeText(getContext(), "Xoá thành công", Toast.LENGTH_SHORT).show();
+        GiaoDich_DAO giaoDich_dao = new GiaoDich_DAO(getContext());
+        List<GIAODICH> list = giaoDich_dao.getGD_PL(__phanloai.getId());
+        //kiem tra id phan loai co nam trong bang giao dich
+        if(list.size() > 0){
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Delete");
+            builder.setMessage("Bạn có thể bị mất dữ liệu.Bạn muốn tiếp tục?");
+            builder.setCancelable(true);
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int j) {
+                    for(int i = 0;i < list.size();i++){
+                        giaoDich_dao.delete(list.get(i).getId());
+                    }
+                    if(dao.delete(__phanloai.getId())){
+                        Toast.makeText(getContext(), "Xoá thành công", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "Xoá thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                    updateData();
+                    dialogInterface.cancel();
+                }
+            });
+            builder.setNegativeButton("No",(dialogInterface, i) -> dialogInterface.cancel());
+            builder.show();
         }else{
-            Toast.makeText(getContext(), "Xoá thất bại", Toast.LENGTH_SHORT).show();
+            if(dao.delete(__phanloai.getId())){
+                Toast.makeText(getContext(), "Xoá thành công", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getContext(), "Xoá thất bại", Toast.LENGTH_SHORT).show();
+            }
+            updateData();
         }
-        updateData();
+
     }
+
 
 }
