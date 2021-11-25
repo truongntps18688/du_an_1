@@ -143,7 +143,7 @@ public class FragmentChildChi_TabLayout_PL extends Fragment {
                 int img = idAnh;
                 dao = new PhanLoai_DAO(getContext());
                 PHANLOAI phanloai = new PHANLOAI(img,name,0);
-                if(validate(name)){
+                if(validate(name,dao)){
                     if(type == 1){
                         phanloai.setId(_phanloai.getId());
                         dao.updata(phanloai);
@@ -191,10 +191,17 @@ public class FragmentChildChi_TabLayout_PL extends Fragment {
         rv.setLayoutManager(gridLayoutManager);
         rv.setAdapter(adapter);
     }
-    private boolean validate(String ed){
-        if(ed.length() == 0){
+    private boolean validate(String ed,PhanLoai_DAO dao){
+        if(ed.length() == 0) {
             Toast.makeText(getContext(), "Chưa nhập tên loại", Toast.LENGTH_SHORT).show();
             return false;
+        }else{
+            for(int i = 0;i < dao.select().size();i++){
+                if(ed.equalsIgnoreCase(dao.select().get(i).getName())){
+                    Toast.makeText(getContext(), "Tên loại đã tồn tại.Vui lòng chọn tên khác", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
         }
         return true;
     }
